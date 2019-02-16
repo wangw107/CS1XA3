@@ -45,7 +45,7 @@ Click each entry to view description.
  - The script will search for files resursively.
 
 ### Delete Untracked Temporary Files
- - All file that's untracked by git and has *.tmp extension will be removed.
- - Names of file being removed will be printed to screen.
+ - All files that's untracked by git and has *.tmp extension will be removed.
+ - Names of files being removed will be printed to screen.
 
 
