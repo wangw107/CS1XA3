@@ -61,7 +61,7 @@ Click each entry to view description.
      - target server:
          - username@servername:/path
      - path of file:
- 	 - /path/filename
+         - /path/filename
 
 ### Download File
 
