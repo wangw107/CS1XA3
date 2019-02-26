@@ -59,6 +59,62 @@ DeleteUntrackedTemps ()
 	echo "Done!"
 }
 
+CurrentUserCheck ()
+{
+	echo "Please enter the username you want to check:"
+	read givenname
+	currentname=`whoami`
+	if [[ $givenname = $currentname ]]; then 
+		echo "This username is currently running."
+	else 
+		echo "No it's not running, the current user is:"
+		echo `whoami`
+	fi
+}
+
+UploadFile ()
+{
+	while true; do
+		echo "Please enter target server:"
+		read target
+		echo "Please enter the path of the file you want to upload:"
+		read path
+		scp path target
+		break
+	done
+}
+
+DownloadFile ()
+{
+	while true; do
+		echo "Please enter target file:"
+		read target
+		echo "Please enter the path you want to put it in:"
+		read path
+		scp target path
+		break
+	done
+}
+
+CreateFolder ()
+{
+	while true; do
+		echo "Please enter the folder's name:"
+		read name
+		echo "Please enter target path:"
+		read path
+		if test -e $path/$name 
+		then
+			echo "The folder already exists."
+			break
+		else
+			mkdir $name
+			echo "Creation complete."
+			break
+		fi
+	done
+}
+
 main ()
 {
 	while true; do
@@ -67,13 +123,21 @@ main ()
 		echo "    1.Merge log"
 		echo "    2.File type Count"
 		echo "    3.Delete untracked *.tmp files"
-		echo "    4.Exit"
+		echo "    4.Check current user"
+		echo "    5.Upload file"
+		echo "    6.Download file"
+		echo "    7.Create folder"
+		echo "    8.Exit"
 		read -p "Enter the number index > " idx
 	        case $idx in
 	        	[1]) MergeLog;;
 			[2]) FileTypeCount;;
 			[3]) DeleteUntrackedTemps;;
-			[4]) exit;;
+			[4]) CurrentUserCheck;;
+			[5]) UploadFile;;
+			[6]) DownloadFile;;
+			[7]) CreateFolder;;
+			[8]) exit;;
         		* ) echo -e "\nPlease enter a selection.\n";;
         	esac
 		read -rsn1 -p "Press any key to continue...";

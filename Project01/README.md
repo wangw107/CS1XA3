@@ -45,7 +45,35 @@ Click each entry to view description.
  - The script will search for files resursively.
 
 ### Delete Untracked Temporary Files
+
  - All files that's untracked by git and has *.tmp extension will be removed.
  - Names of files being removed will be printed to screen.
 
+### Check Current User
 
+ - Checks if the user is currently running.
+ - Returns the current user.
+
+### Upload File
+
+ - Uploads a selected file to the target server.
+ - Input sample:
+     - target server:
+         - username@servername:/path
+     - path of file:
+ 	 - /path/filename
+
+### Download File
+
+ - Downloads a selected file from the target server.
+ - Input sample:
+     - target file:
+         - username@servername:/path/filename
+     - target path:
+         - /var/www/local_dir
+
+
+### Create Folder
+
+ - Creates a folder with given name under the given directory.    
+ - If the folder already exists, send an alert.
