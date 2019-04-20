@@ -1,0 +1,39 @@
+.display-outer
+{
+    width: 100%;    
+    display:table;
+    margin: 0px;
+    height: 25%;
+    border-style: dotted;
+    border-width: 1px;
+    text-align: center;
+}
+
+.info-display-outer
+{
+    width: 100%;    
+    margin: 0px;
+    height: 25%;
+    border-style: dotted;
+    border-width: 1px;
+    text-align: center;
+}
+
+.display
+{
+    margin: 5px;
+    text-align: center;
+    display:table-cell;
+    vertical-align:middle;
+    font-size: 7.5vw;
+    white-space:normal;
+}
+
+.info-display
+{
+    margin: 5px;
+    display:inline-block;
+    text-align: center;
+    vertical-align:middle;
+    word-break: break-all;
+}

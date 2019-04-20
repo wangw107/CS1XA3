@@ -1,0 +1,37 @@
+<head>
+    <script src="simpleapp.js"></script>
+    <link rel="stylesheet" type="text/css" href="simpleapp.css">
+    <audio id="sound" src="sound.ogg"></audio>
+</head>
+
+<body>
+    <div class="display-outer">
+        <span id="lblNow" class="display"></span>
+    </div>
+    <div class="display-outer">
+        <span id="lblElapsed" class="display">--:--:--.---</span>
+    </div>
+    <div class="display-outer">
+        <span id="lblRemain" class="display">--:--:--.---</span>
+    </div>
+    <div id="panInfoOuter" class="info-display-outer">
+        <span id="lblInfo" class="info-display"></span>
+    </div>
+
+
+    <button id="btnStart">Start</button>
+    <button id="btnStop">Stop</button>
+    <button id="btnReset">Reset</button>
+    <br>
+    <input type="radio" name="optType" value="stopAt" checked>
+    <label>Stop at (timestamp):</label>
+    <input id="txtStopAt" />
+    <br>
+    <input type="radio" name="optType" value="countDown">
+    <label>Countdown for (minutes, decimal allowed):</label>
+    <input id="txtCountdown" value="60"/>
+    <br>
+    <label>Additional info (will display above):</label>
+    <br>
+    <textarea id="txtInfo"></textarea>
+</body>
