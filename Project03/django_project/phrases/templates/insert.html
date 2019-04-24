@@ -1,0 +1,18 @@
+<html>
+<head>
+<title>Add Your Own Phrase</title>
+</head>
+
+<body>
+<h1>Insert a phrase:</h1>
+<form action="" method="POST">
+{% csrf_token %}
+Your input: <input type="text" name="phrase"/>
+<br/>
+<input type="submit" value="Post"/>
+</form>
+<input type="button" onclick="javascript:window.history.back()" value="back"/>
+</body>
+
+</html>
+

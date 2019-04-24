@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
+    'phrases',
 ]
 
 MIDDLEWARE = [
@@ -123,5 +124,5 @@ STATICFILES_DIRS = [
     "/home/macid/CS1XA3/public_html/",
 ]
 STATIC_ROOT = "/home/wangw107/CS1XA3/django_project/static/"
-LOGIN_REDIRECT_URL = '/u/wangw107/'
+LOGIN_REDIRECT_URL = 'display/'
 LOGOUT_REDIRECT_URL = '/e/wangw107'
