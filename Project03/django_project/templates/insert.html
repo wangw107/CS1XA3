@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Add Your Own Phrase</title>
+<title>Add Your Own Phrase/Sentence</title>
 </head>
 
 <body>
@@ -8,6 +8,15 @@
 <form action="" method="POST">
 {% csrf_token %}
 Your input: <input type="text" name="phrase"/>
+<br/>
+<input type="submit" value="Post"/>
+</form>
+<br/>
+<br/>
+<h1>Insert a sentence:</h1>
+<form action="" method="POST">
+{% csrf_token %}
+Your input: <input type="text" name="sentence"/>
 <br/>
 <input type="submit" value="Post"/>
 </form>
