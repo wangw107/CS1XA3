@@ -4,15 +4,19 @@ from phrases import models as phrases_models
 from .models import Phrases, Sentences
 
 def display(request):
-	context = {
-		'sentence': phrases_models.Sentences.objects.values_list('sentence', flat=True).order_by("?").first(),
-		'phrase1': phrases_models.Phrases.objects.values_list('phrase', flat=True).order_by("?").first(),
-		'phrase2': phrases_models.Phrases.objects.values_list('phrase', flat=True).order_by("?").first(),
-		'phrase3': phrases_models.Phrases.objects.values_list('phrase', flat=True).order_by("?").first(),
-		'phrase4': phrases_models.Phrases.objects.values_list('phrase', flat=True).order_by("?").first(),
+        result = "[Something wrong happened in the server...]"
+        try:
+                result = phrases_models.Sentences.objects.values_list('sentence', flat=True).order_by("?").first().format(phrases_models.Phrases.objects.values_list('phrase', flat=True).order_by("?").first())
+        except:
+                pass
+        context = {
+		'result': result
+		#'phrase1': phrases_models.Phrases.objects.values_list('phrase', flat=True).order_by("?").first(),
+		#'phrase2': phrases_models.Phrases.objects.values_list('phrase', flat=True).order_by("?").first(),
+		#'phrase3': phrases_models.Phrases.objects.values_list('phrase', flat=True).order_by("?").first(),
+		#'phrase4': phrases_models.Phrases.objects.values_list('phrase', flat=True).order_by("?").first(),
 	}
-	return render(request, 'display.html', context)
-
+        return render(request, 'display.html', context)
 
 def submit(request):
 	if request.method == 'POST':

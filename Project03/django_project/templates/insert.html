@@ -3,7 +3,9 @@
 <title>Add Your Own Phrase/Sentence</title>
 </head>
 
+{% block content %}
 <body>
+{% if user.is_authenticated %}
 <h1>Insert a phrase:</h1>
 <form action="" method="POST">
 {% csrf_token %}
@@ -20,8 +22,11 @@ Your input: <input type="text" name="sentence"/>
 <br/>
 <input type="submit" value="Post"/>
 </form>
-<input type="button" onclick="javascript:window.history.back()" value="back"/>
+<input type="button" onclick="javascript:window.history.back()" value="Back"/>
+{% else %}
+{% endif %}
 </body>
+{% endblock %}
 
 </html>
 

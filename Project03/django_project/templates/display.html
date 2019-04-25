@@ -1,36 +1,17 @@
 <html>
 <body>
 <br/>
-<ul>
-	<li>
-	    <div class="sentence">
-                {{ sentence }}
-            </div>
-	</li>
-</ul>
+<h1 class="result" style="text-align:center; padding:10px 0px 10px 0px; border-width: 1.5px; border-style: dashed; border-color: black;">
+{{ result }}
+</h1>
 <br/>
-<ul>
-        <li>
-            <div class="phrase">
-                {{ phrase1 }}
-            </div>
-        </li>
-        <li>
-            <div class="phrase">
-                {{ phrase2 }}
-            </div>
-        </li>
-        <li>
-            <div class="phrase">
-                {{ phrase3 }}
-            </div>
-        </li>
-        <li>
-            <div class="phrase">
-                {{ phrase4 }}
-            </div>
-        </li>
-    </ul>
-    <a href="insert.html">Wanna add some interesting phrases/sentence?</a>
+{% block content %}
+{% if user.is_authenticated %}
+<p>Hi {{ user.username }}! <a href="{% url 'logout' %}">Logout</a></p>
+<a href="../insert">Add phrase/sentence ...</a>
+{% else %}
+<p>Wanna add some interesting phrases/sentence? <a href="{% url 'signup' %}">Sign up to do so, </a> or <a href="{% url 'login' %}">Login</a>!</p>
+{% endif %}
+{% endblock %}
 </body>
 </html>
