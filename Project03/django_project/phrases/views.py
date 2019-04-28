@@ -6,7 +6,7 @@ from .models import Phrases, Sentences
 def display(request):
         result = "[Something wrong happened in the server...]"
         try:
-                result = phrases_models.Sentences.objects.values_list('sentence', flat=True).order_by("?").first().format(phrases_models.Phrases.objects.values_list('phrase', flat=True).order_by("?").first())
+                result = phrases_models.Sentences.objects.values_list('sentence', flat=True).order_by("?").first().replace("{}", phrases_models.Phrases.objects.values_list('phrase', flat=True).order_by("?").first())
         except:
                 pass
         context = {
@@ -19,16 +19,40 @@ def display(request):
         return render(request, 'display.html', context)
 
 def submit(request):
-	if request.method == 'POST':
-		if request.POST.get('phrase'):
-			post = Phrases()
-			post.phrase = request.POST.get('phrase')
-			post.save()
-			return render(request, 'insert.html')
-		elif request.POST.get('sentence'):
-			post = Sentences()
-			post.sentence = request.POST.get('sentence')
-			post.save()
-			return render(request, 'insert.html')
-	else:
-		return render(request, 'insert.html') 
+        if request.method == 'POST':
+                context = {}
+                if request.POST.get('phrase'):
+                        result = request.POST.get('phrase').strip()
+                        try:
+                                post = Phrases()
+                                post.phrase = result
+                                post.save()
+                                context["result_color"] = "green"
+                                context["result"] = "Content added successfully!"
+                        except Exception as ex:
+                                exstr = str(ex)
+                                if "UNIQUE constraint failed" in exstr:
+                                        context["result_color"] = "red"
+                                        context["result"] = "Content with same value exists!"
+                        return render(request, 'insert.html', context)
+                elif request.POST.get('sentence'):
+                        result = request.POST.get('sentence').strip()
+                        try:
+                                post = Sentences()
+                                post.sentence = result
+                                post.save()
+                                context["result_color"] = "green"
+                                context["result"] = "Content added successfully!"
+                        except Exception as ex:
+                                exstr = str(ex)
+                                if "UNIQUE constraint failed" in exstr:
+                                        context["result_color"] = "red"
+                                        context["result"] = "Content with same value exists!"
+                        return render(request, 'insert.html', context)
+                else:
+                        context["result_color"] = "red"
+                        context["result"] = "Content is empty!"
+                        print(context)
+                        return render(request, 'insert.html', context)
+        else:
+                return render(request, 'insert.html') 
